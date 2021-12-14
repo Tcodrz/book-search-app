@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
   { path: 'search', loadChildren: () => import('./book-search/book-search.module').then(m => m.BookSearchModule) },
-  { path: 'wishlist', loadChildren: () => import('./wish-listh/wish-list.module').then(m => m.WishListModule) },
+  { path: 'wishlist', loadChildren: () => import('./wish-list/wish-list.module').then(m => m.WishListModule) },
   { path: '**', redirectTo: 'login'}
 ];
 
