@@ -5,19 +5,22 @@ import * as UserActions from './user.actions';
 
 export interface UserState {
   user: User;
+  isLoggedIn: boolean;
 }
 
 const initialUserState: UserState = {
   user : {
-    username: 'Admin'
-  }
+    username: '',
+  },
+  isLoggedIn: false
 };
 
 const _userReducer = createReducer(
   initialUserState,
   on(UserActions.login, (state, action) => {
     return {
-      user: action.payload
+      user: action.payload,
+      isLoggedIn: true
     }
   })
 );
