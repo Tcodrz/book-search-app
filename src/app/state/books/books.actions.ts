@@ -5,3 +5,5 @@ import { props } from '@ngrx/store';
 
 export const search = createAction('[BOOKS] Search', props<{payload: QueryObject}>());
 export const response = createAction('[BOOKS] Response', props<{ payload: Book[]}>());
+export const loadMore = createAction('[BOOKS] Load More', props<{ payload: {lastQuery: QueryObject, index: number }}>());
+export const moreLoaded = createAction('[BOOKS] More Loaded', props<{ payload: Book[] }>());

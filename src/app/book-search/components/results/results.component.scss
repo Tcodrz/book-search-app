@@ -1,0 +1,58 @@
+::ng-deep {
+  .p-orderlist .p-orderlist-controls {
+    display: none;
+  }
+}
+
+.result-container {
+  margin-top: 1.5rem;
+
+  .row-container {
+    display: flex;
+    flex-direction: column;
+
+
+    .result-row {
+      min-width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+
+
+      img {
+        margin: 0 10px 0 0;
+      }
+
+      h4 {
+        margin: 0;
+      }
+
+      .authors {
+        margin: 6px 0;
+      }
+
+      .language {
+        margin: 5px 0;
+      }
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-self: baseline;
+      padding-left: 42px;
+      min-width: max-content;
+
+      button {
+        margin: auto;
+        min-width: fit-content;
+        margin-left: 1rem;
+      }
+    }
+  }
+  .load-more {
+    margin-top: 1rem;
+  }
+}

@@ -1,1 +1,4 @@
-<p>book-search works!</p>
+<div class="container">
+  <app-search (search)="onSearch($event)"></app-search>
+  <app-results [value]="books$ | async" (load)="onLoadMore($event)"></app-results>
+</div>

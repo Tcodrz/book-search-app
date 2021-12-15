@@ -2,7 +2,7 @@ export interface Volume {
   authors: string[];
   categories: string[];
   description: string;
-  imageLinks: {smallThumbnail: string; thimbnail: string};
+  imageLinks: {smallThumbnail: string; thumbnail: string};
   infoLink: string;
   language: string;
   maturityRating: string;

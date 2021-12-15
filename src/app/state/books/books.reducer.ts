@@ -13,7 +13,12 @@ const _booksReducer = createReducer(
   on(BooksActions.response, (state, action) => {
     return {
       books: action.payload
-    }
+    };
+  }),
+  on(BooksActions.moreLoaded, (state, action) => {
+    return {
+      books: state.books.concat(action.payload)
+    };
   })
 );
 export function booksReducer(state = initialBooksState, action: Action): BooksState {

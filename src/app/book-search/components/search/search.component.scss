@@ -1,0 +1,29 @@
+.search-info {
+  border: 1px solid #6467f2;
+  background: #dadafc;
+  color: #404040;
+  padding: .8rem 0.5rem;
+  width: fit-content;
+  border-radius: 10px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+
+  i {
+    margin-right: .5rem;
+    font-size: 1.1rem;
+    color: #326fd1;
+  }
+}
+
+.search-inputs {
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  div {
+    margin: 1rem 1rem 0 0;
+  }
+}

@@ -1,0 +1,42 @@
+<p-fieldset [toggleable]="isMobile()">
+  <ng-template pTemplate="header">
+    <h2>
+      Hello User
+    </h2>
+  </ng-template>
+  <form [formGroup]="searchForm">
+    <div class="search-info">
+      <i class="pi pi-search"></i>
+      <div>
+        You can search any of the parameters to find books, at least one is required
+      </div>
+    </div>
+    <div class="search-inputs">
+
+      <div>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-at"></i></span>
+          <input type="text" pInputText formControlName="intitle" placeholder="Title">
+        </div>
+      </div>
+      <div>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+          <input type="text" pInputText formControlName="inauthor" placeholder="Author">
+        </div>
+      </div>
+      <div>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-users"></i></span>
+          <input type="text" pInputText formControlName="inpublisher" placeholder="Publisher">
+        </div>
+      </div>
+      <div>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-list"></i></span>
+          <input type="text" pInputText formControlName="subject" placeholder="Category">
+        </div>
+      </div>
+    </div>
+  </form>
+</p-fieldset>
