@@ -4,20 +4,30 @@ import * as BooksActions from './books.actions';
 
 export interface BooksState {
   books: Book[];
+  wishList: Book[];
 }
 const initialBooksState: BooksState = {
-  books: []
+  books: [],
+  wishList: []
 }
 const _booksReducer = createReducer(
   initialBooksState,
   on(BooksActions.response, (state, action) => {
     return {
-      books: action.payload
+      ...state,
+      books: action.payload,
     };
   }),
   on(BooksActions.moreLoaded, (state, action) => {
     return {
+      ...state,
       books: state.books.concat(action.payload)
+    };
+  }),
+  on(BooksActions.addToWishList, (state, action) => {
+    return {
+      ...state,
+      wishList: [ ...state.wishList, action.payload]
     };
   })
 );

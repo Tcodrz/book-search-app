@@ -1,7 +1,7 @@
 import { Book } from './../state/interface/book.interface';
 import { map, Observable, of } from 'rxjs';
 import { QueryObject } from './services/book-search.service';
-import { search, loadMore } from './../state/books/books.actions';
+import { search, loadMore, addToWishList } from './../state/books/books.actions';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { AppState } from '../state/state';
@@ -21,7 +21,6 @@ export class BookSearchComponent implements OnInit {
   }
 
   onSearch(query: QueryObject): void {
-    console.log(query);
     this.lastQuery = query;
     this.store.dispatch(search({
       payload: query
@@ -29,10 +28,10 @@ export class BookSearchComponent implements OnInit {
   }
 
   onLoadMore(index: number): void {
-    console.log(index);
     this.store.dispatch(loadMore({ payload: {
       lastQuery: this.lastQuery, index
     } }));
   }
 
+  onAddToWishList(book: Book): void { this.store.dispatch(addToWishList({ payload: book })); }
 }

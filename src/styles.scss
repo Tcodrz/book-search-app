@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans', sans-serif !important;
+}
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+
+@media only screen and (min-width: 320px) {
+  .container {
+    margin: 0 !important;
+  }
+
+  fieldset {
+    min-width: auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    margin: 2rem 2rem !important;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    margin: 3rem 5rem !important;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .container {
+    margin: 5rem 8rem !important;
+  }
+
+}

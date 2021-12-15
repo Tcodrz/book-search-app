@@ -16,7 +16,7 @@
         <div class="actions">
           <button pButton type="button" label="More" icon="pi pi-book" class="p-button-primary p-button-sm">
           </button>
-          <button pButton type="button" label="Add to wishlist" icon="pi pi-heart"
+          <button pButton type="button" (click)="addBookToWishList(book)" label="Add to wishlist" icon="pi pi-heart"
             class="p-button-help p-button-sm"></button>
         </div>
       </div>
@@ -26,4 +26,7 @@
   </p-orderList>
   <button pButton type="button" (click)="loadMore()" label="load more" icon="pi pi-sync"
     class="p-button-sm p-button-secondary load-more"></button>
+  <div class="loader-container">
+    <app-loader></app-loader>
+  </div>
 </div>

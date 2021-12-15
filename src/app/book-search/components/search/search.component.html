@@ -1,7 +1,7 @@
 <p-fieldset [toggleable]="isMobile()">
   <ng-template pTemplate="header">
     <h2>
-      Hello User
+      Hello, User
     </h2>
   </ng-template>
   <form [formGroup]="searchForm">
@@ -15,7 +15,7 @@
 
       <div>
         <div class="p-inputgroup">
-          <span class="p-inputgroup-addon"><i class="pi pi-at"></i></span>
+          <span class="p-inputgroup-addon"><i class="pi pi-book"></i></span>
           <input type="text" pInputText formControlName="intitle" placeholder="Title">
         </div>
       </div>
@@ -40,3 +40,6 @@
     </div>
   </form>
 </p-fieldset>
+<div class="loader-container">
+  <app-loader></app-loader>
+</div>

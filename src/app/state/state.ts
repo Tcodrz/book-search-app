@@ -1,4 +1,4 @@
-import { Action, ActionReducerMap, createReducer } from '@ngrx/store';
+import { Action, ActionReducerMap, createReducer, on, createAction } from '@ngrx/store';
 import { booksReducer, BooksState } from './books/books.reducer';
 import { userReducer, UserState } from './user/user.reducer';
 
@@ -12,7 +12,13 @@ const initialState = {
   loading: false
 };
 
-const _appReducer = createReducer(initialState);
+export const loading = createAction('[APP] Loading');
+export const loaded = createAction('[APP] Loaded');
+
+const _appReducer = createReducer(initialState,
+  on(loading, () => ({ loading: true })),
+  on(loaded, () => ({ loading: false }))
+);
 
 function appReducer(state = initialState, action: Action): { loading: boolean} {
   return _appReducer(state, action);
