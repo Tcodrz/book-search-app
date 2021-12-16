@@ -10,5 +10,6 @@ export class CachService {
     return true;
   }
   getItem<T>(key: string): T | null { return JSON.parse(sessionStorage.getItem(key) ?? '') ?? null; }
+  clear(): void { sessionStorage.clear(); }
 
 }

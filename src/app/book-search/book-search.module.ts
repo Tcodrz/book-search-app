@@ -1,3 +1,4 @@
+import { CoreModule } from './../core/core.module';
 import { ArrayToStringPipe } from './../core/pipes/array-to-string.pipe';
 import { PrimengModule } from './../primeng/primeng.module';
 import { NgModule } from '@angular/core';
@@ -16,7 +17,6 @@ import { BookModalComponent } from './components/book-modal/book-modal.component
     BookSearchComponent,
     SearchComponent,
     ResultsComponent,
-    ArrayToStringPipe,
     BookModalComponent
   ],
   imports: [
@@ -24,6 +24,7 @@ import { BookModalComponent } from './components/book-modal/book-modal.component
     BookSearchRoutingModule,
     ReactiveFormsModule,
     PrimengModule,
+    CoreModule
   ],
   providers: [ ]
 })
