@@ -1,0 +1,49 @@
+::ng-deep {
+
+  .p-card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  div.p-card.p-component {
+    padding: 2rem 1rem !important;
+    margin-top: 1rem;
+  }
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    margin-bottom: -10px;
+  }
+
+  .login-form {
+
+    .submit-btn {
+      margin-top: 1rem;
+      width: 100%
+    }
+
+    .username-input {
+      width: 100%;
+    }
+
+    .login-error {
+      margin-top: 10px;
+      color: #e24c4c;
+    }
+  }
+}
+
+
+.book-icon {
+  display: flex;
+  flex-direction: column;
+  font-size: 50px;
+  margin-right: 1rem;
+}

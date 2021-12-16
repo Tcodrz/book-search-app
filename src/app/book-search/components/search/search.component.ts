@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { User } from './../../../state/interface/user.interface';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { debounceTime, Subscription } from 'rxjs';
@@ -10,9 +11,11 @@ import { QueryObject } from './../../services/book-search.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit, OnDestroy {
+  @Input() set user(val: User | null) { if (val) this.username = val.username; }
   @Output() search: EventEmitter<QueryObject> = new EventEmitter();
   searchForm: FormGroup = new FormGroup({});
   subscription: Subscription = new Subscription();
+  username = '';
 
   constructor(
     private fb: FormBuilder,

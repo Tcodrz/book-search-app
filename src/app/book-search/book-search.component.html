@@ -1,5 +1,5 @@
 <div class="container">
-  <app-search (search)="onSearch($event)"></app-search>
+  <app-search [user]="user$ | async" (search)="onSearch($event)"></app-search>
   <app-results [value]="books$ | async" (load)="onLoadMore($event)" (addToWishList)="onAddToWishList($event)">
   </app-results>
 </div>

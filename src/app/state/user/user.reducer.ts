@@ -17,7 +17,9 @@ const initialUserState: UserState = {
 
 const _userReducer = createReducer(
   initialUserState,
+  on(UserActions.logout, () => initialUserState),
   on(UserActions.login, (state, action) => {
+    if (state.isLoggedIn) return state;
     return {
       user: action.payload,
       isLoggedIn: true

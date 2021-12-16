@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div class="login-container">
+  <p-card>
+    <ng-template pTemplate="header">
+      <i class="pi pi-book book-icon"></i>
+      <div>
+        <h2>Welcome To Books Search App </h2>
+        <p>Enter your username and start searching books </p>
+      </div>
+    </ng-template>
+    <div class="login-form">
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <span class="p-float-label">
+          <input id="float-input" type="text" formControlName="username" pInputText class="username-input">
+          <label for="float-input">Username</label>
+        </span>
+        <div *ngIf="username?.touched || username?.dirty && username?.invalid">
+          <div *ngIf="username?.errors?.['required']" class="login-error">
+            Username is required
+          </div>
+        </div>
+        <button type="submit" pButton [disabled]="form.invalid"
+          class="p-button-sm p-button-success p-button-raised submit-btn">Go!</button>
+      </form>
+    </div>
+  </p-card>
+</div>

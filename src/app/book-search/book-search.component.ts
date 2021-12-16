@@ -1,3 +1,4 @@
+import { User } from './../state/interface/user.interface';
 import { Book } from './../state/interface/book.interface';
 import { map, Observable, of } from 'rxjs';
 import { QueryObject } from './services/book-search.service';
@@ -13,25 +14,24 @@ import { AppState } from '../state/state';
 })
 export class BookSearchComponent implements OnInit {
   books$: Observable<Book[]> = of([]);
+  user$!: Observable<User>;
   lastQuery!: QueryObject;
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.books$ = this.store.select('books').pipe(map(state => state.books));
+    this.user$ = this.store.select('user').pipe(map(state => state.user));
   }
-
   onSearch(query: QueryObject): void {
     this.lastQuery = query;
     this.store.dispatch(search({
       payload: query
     }));
   }
-
   onLoadMore(index: number): void {
     this.store.dispatch(loadMore({ payload: {
       lastQuery: this.lastQuery, index
     } }));
   }
-
   onAddToWishList(book: Book): void { this.store.dispatch(addToWishList({ payload: book })); }
 }

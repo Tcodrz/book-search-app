@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { MyHttpInterceptor } from './core/interceptors/http.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -21,7 +22,8 @@ import { StateModule } from './state/state.module';
     AppRoutingModule,
     HttpClientModule,
     StateModule,
-    PrimengModule
+    PrimengModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: MyHttpInterceptor, multi: true}
