@@ -1,5 +1,5 @@
 <div class="result-container" *ngIf="books.length">
-  <p-orderList [value]="books">
+  <p-virtualScroller [value]="books" scrollHeight="500px" [itemSize]="books.length">
     <ng-template let-book pTemplate="item">
       <div class="row-container">
         <div class="result-row">
@@ -21,12 +21,7 @@
         </div>
       </div>
     </ng-template>
-    <ng-template pTemplate="empty">
-    </ng-template>
-  </p-orderList>
+  </p-virtualScroller>
   <button pButton type="button" (click)="loadMore()" label="load more" icon="pi pi-sync"
     class="p-button-sm p-button-secondary load-more"></button>
-  <div class="loader-container">
-    <app-loader></app-loader>
-  </div>
 </div>

@@ -2,6 +2,21 @@
   .p-orderlist .p-orderlist-controls {
     display: none;
   }
+
+  div.p-virtualscroller-item {
+    height: fit-content !important;
+    padding: 11px 0 13px 35px;
+  }
+  div.p-virtualscroller-item:hover {
+    background-color: #f5f9ff;
+  }
+
+  @media only screen and (max-width: 768px) {
+    div.p-virtualscroller-item {
+      padding: 11px 0 13px 12px;
+    }
+
+  }
 }
 
 .result-container {
@@ -52,6 +67,7 @@
       }
     }
   }
+
   .load-more {
     margin-top: 1rem;
   }
