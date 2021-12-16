@@ -8,6 +8,7 @@ import { CardModule } from 'primeng/card';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { CommonModule } from '@angular/common';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
+import { DialogModule } from 'primeng/dialog';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { VirtualScrollerModule } from 'primeng/virtualscroller';
     CardModule,
     ProgressSpinnerModule,
     LoaderComponent,
-    VirtualScrollerModule
+    VirtualScrollerModule,
+    DialogModule
   ],
 })
 export class PrimengModule { }

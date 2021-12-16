@@ -16,6 +16,8 @@ export class BookSearchComponent implements OnInit {
   books$: Observable<Book[]> = of([]);
   user$!: Observable<User>;
   lastQuery!: QueryObject;
+  showModal = false;
+  book!: Book;
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
@@ -33,5 +35,17 @@ export class BookSearchComponent implements OnInit {
       lastQuery: this.lastQuery, index
     } }));
   }
-  onAddToWishList(book: Book): void { this.store.dispatch(addToWishList({ payload: book })); }
+  onShowBookDetails(book: Book): void {
+    this.book = book;
+    this.showModal = true;
+  }
+  addBookToWishList(): void {
+    this.store.dispatch(addToWishList({ payload: this.book }));
+    this.hideModal();
+  }
+  hideModal(): void { this.showModal = false; }
+  bookInWishList(): Observable<boolean> {
+    return this.store.select('books').pipe(map(state => state.wishList.includes(this.book)));
+  }
+
 }

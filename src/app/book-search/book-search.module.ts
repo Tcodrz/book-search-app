@@ -8,6 +8,7 @@ import { BookSearchComponent } from './book-search.component';
 import { SearchComponent } from './components/search/search.component';
 import { ResultsComponent } from './components/results/results.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BookModalComponent } from './components/book-modal/book-modal.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BookSearchComponent,
     SearchComponent,
     ResultsComponent,
-    ArrayToStringPipe
+    ArrayToStringPipe,
+    BookModalComponent
   ],
   imports: [
     CommonModule,

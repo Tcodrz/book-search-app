@@ -1,0 +1,18 @@
+.book-info-container {
+  display: flex;
+  flex-direction: column;
+
+  .book-info {
+    display: flex;
+    flex-direction: row;
+
+    h1 {
+      margin-bottom: auto;
+      margin-top: 0;
+    }
+
+    .book-image {
+      margin-right: 1.5rem;
+    }
+  }
+}
