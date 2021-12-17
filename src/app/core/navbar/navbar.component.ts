@@ -22,8 +22,6 @@ export class NavbarComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     const url = this.router.url;
-
-    console.log(url);
     this.items = [
       {
         label: 'Logout',

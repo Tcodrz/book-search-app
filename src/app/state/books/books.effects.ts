@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { Store } from '@ngrx/store';
 import { catchError, EMPTY, map, mergeMap } from 'rxjs';
 import { ApiService } from '../../core/services/api.service';
-import { AppState } from '../state';
 import { BookSearchService } from './../../book-search/services/book-search.service';
 import { loadMore, moreLoaded, response, search } from './books.actions';
 
