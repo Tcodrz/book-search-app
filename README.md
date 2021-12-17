@@ -2,7 +2,7 @@
 
 run npm install
 
-add you google api key in ./src/environment/environment.ts - https://developers.google.com/books/docs/v1/using#WorkingVolumes  
+add your google api key in ./src/environment/environment.ts - https://developers.google.com/books/docs/v1/using#WorkingVolumes  
 
 run ng serve 
 
