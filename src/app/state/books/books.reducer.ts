@@ -1,3 +1,4 @@
+import { QueryObject } from './../../book-search/services/book-search.service';
 import { createReducer, Action, on } from '@ngrx/store';
 import { Book } from "../interface/book.interface";
 import * as BooksActions from './books.actions';
@@ -5,10 +6,17 @@ import * as BooksActions from './books.actions';
 export interface BooksState {
   books: Book[];
   wishList: Book[];
+  query: QueryObject;
 }
 const initialBooksState: BooksState = {
   books: [],
-  wishList: []
+  wishList: [],
+  query: {
+    intitle: '',
+    inauthor: '',
+    inpublisher: '',
+    subject: ''
+  }
 }
 const _booksReducer = createReducer(
   initialBooksState,
@@ -29,6 +37,12 @@ const _booksReducer = createReducer(
       ...state,
       wishList: [ ...state.wishList, action.payload]
     };
+  }),
+  on(BooksActions.onQuery, (state, action) => {
+    return {
+      ...state,
+      query: action.payload
+    }
   })
 );
 export function booksReducer(state = initialBooksState, action: Action): BooksState {

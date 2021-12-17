@@ -1,8 +1,8 @@
-import { User } from './../../../state/interface/user.interface';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { DeviceDetectorService } from 'ngx-device-detector';
+import { FormControl, FormGroup } from '@angular/forms';
 import { debounceTime, Subscription } from 'rxjs';
+import * as utils from '../../../core/utils/utils';
+import { User } from './../../../state/interface/user.interface';
 import { QueryObject } from './../../services/book-search.service';
 
 @Component({
@@ -12,23 +12,21 @@ import { QueryObject } from './../../services/book-search.service';
 })
 export class SearchComponent implements OnInit, OnDestroy {
   @Input() set user(val: User | null) { if (val) this.username = val.username; }
+  @Input() set query(val: QueryObject) {
+    if (!utils.objectsComnpare<QueryObject>(val, this.searchForm.value as QueryObject))
+      this.searchForm.patchValue(val);
+  }
   @Output() search: EventEmitter<QueryObject> = new EventEmitter();
-  searchForm: FormGroup = new FormGroup({});
+  searchForm: FormGroup = new FormGroup({
+    intitle: new FormControl(''),
+    inauthor: new FormControl(''),
+    inpublisher: new FormControl(''),
+    subject: new FormControl('')
+  });
   subscription: Subscription = new Subscription();
   username = '';
 
-  constructor(
-    private fb: FormBuilder,
-    private deviceDetactor: DeviceDetectorService
-  ) { }
   ngOnInit(): void {
-    this.searchForm = this.fb.group({
-      intitle: this.fb.control('', []),
-      inauthor: this.fb.control('', []) ,
-      inpublisher: this.fb.control('', []),
-      subject: this.fb.control('', [])
-    });
-
     this.subscription = this.searchForm.valueChanges.pipe(
       debounceTime(400)
     ).subscribe(form => {
@@ -36,5 +34,4 @@ export class SearchComponent implements OnInit, OnDestroy {
     });
   }
   ngOnDestroy(): void { this.subscription.unsubscribe(); }
-  isMobile(): boolean { return !this.deviceDetactor.isDesktop(); }
 }
