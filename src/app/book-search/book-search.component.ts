@@ -13,20 +13,23 @@ import { AppState } from '../state/state';
   styleUrls: ['./book-search.component.scss']
 })
 export class BookSearchComponent implements OnInit, OnDestroy {
-  books$: Observable<Book[]> = of([]);
+  books: Book[] = [];
   user$!: Observable<User>;
   lastQuery!: QueryObject;
+  totalItems = 0;
   querySubscription: Subscription = new Subscription();
+  totalItemsSubscription: Subscription = new Subscription();
   showModal = false;
   book!: Book;
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.books$ = this.store.select('books').pipe(map(state => state.books));
+    this.store.select('books').subscribe(state => {
+      this.books = state.books;
+      this.lastQuery = state.query;
+      this.totalItems = state.totalItems;
+    })
     this.user$ = this.store.select('user').pipe(map(state => state.user));
-    this.querySubscription = this.store.select('books').pipe(map(state => state.query)).subscribe(query => {
-      this.lastQuery = query;
-    });
   }
   ngOnDestroy(): void { this.querySubscription.unsubscribe(); }
   onSearch(query: QueryObject): void {
@@ -35,12 +38,14 @@ export class BookSearchComponent implements OnInit, OnDestroy {
     }));
   }
   onLoadMore(index: number): void {
-    this.store.dispatch(loadMore({
-      payload: {
-        index,
-        lastQuery: this.lastQuery
-      }
-    }));
+    if (index < (this.totalItems -1)) {
+      this.store.dispatch(loadMore({
+        payload: {
+          index,
+          lastQuery: this.lastQuery
+        }
+      }));
+    }
   }
   onShowBookDetails(book: Book): void {
     this.book = book;

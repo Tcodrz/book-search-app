@@ -5,11 +5,13 @@ import * as BooksActions from './books.actions';
 
 export interface BooksState {
   books: Book[];
+  totalItems: number;
   wishList: Book[];
   query: QueryObject;
 }
 const initialBooksState: BooksState = {
   books: [],
+  totalItems: 0,
   wishList: [],
   query: {
     intitle: '',
@@ -23,7 +25,8 @@ const _booksReducer = createReducer(
   on(BooksActions.response, (state, action) => {
     return {
       ...state,
-      books: action.payload,
+      books: action.payload.books,
+      totalItems: action.payload.totalItems
     };
   }),
   on(BooksActions.moreLoaded, (state, action) => {

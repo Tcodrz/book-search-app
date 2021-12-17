@@ -18,7 +18,7 @@ export class BooksEffects {
         this.booksSearchService.buildQuery(action.payload) +
         this.params
       ).pipe(
-        map((books) => (response({ payload: books })),
+        map((res) => (response({ payload: {books: res.items, totalItems: res.totalItems }})),
           catchError(() => EMPTY)
         ))
     }
@@ -27,11 +27,13 @@ export class BooksEffects {
 
   loadMore$ = createEffect(() => this.actions$.pipe(
     ofType(loadMore),
-    mergeMap((action) => this.api.searchBooks(
+    mergeMap((action) =>
+    this.api.searchBooks(
       this.booksSearchService.buildQuery(action.payload.lastQuery) +
       this.params +
       `&startIndex=${action.payload.index}`
     ).pipe(
+      map(res => res.items),
       map((books) => (moreLoaded({ payload: books }))),
       catchError(() => EMPTY)
     ))
