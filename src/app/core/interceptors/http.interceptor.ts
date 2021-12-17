@@ -1,33 +1,21 @@
-import { loading, loaded } from './../../state/state';
-import { Store } from '@ngrx/store';
-import { Injectable } from '@angular/core';
 import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor,
-  HttpResponse,
-  HttpErrorResponse
+  HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse
 } from '@angular/common/http';
-import { Observable, tap, map } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable, tap } from 'rxjs';
 import { AppState } from 'src/app/state/state';
-import * as BookActions from '../../state/books/books.actions';
+import { loaded, loading } from './../../state/state';
 
 @Injectable()
 export class MyHttpInterceptor implements HttpInterceptor {
   constructor(private store: Store<AppState>) { }
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    this.store.dispatch(loading())
     return next.handle(request).pipe(
-      map(req => {
-        this.store.dispatch(loading())
-        if (req instanceof HttpErrorResponse) {
-          this.store.dispatch(BookActions.response({ payload: { books: [], totalItems: 0 } }));
-          this.store.dispatch(loaded());
-          return new HttpResponse({status: 200}); // temporary hack
-          // HANDLE ERRORS
-        }
-          this.store.dispatch(loaded());
-          return req;
+      tap((req) => {
+        if (req instanceof HttpResponse)
+        this.store.dispatch(loaded())
       })
     );
   }

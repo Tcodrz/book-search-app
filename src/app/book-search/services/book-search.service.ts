@@ -22,4 +22,5 @@ export class BookSearchService {
     if (startIndex) queryStr += `&startIndex=${startIndex}`;
     return queryStr;
   }
+  isValidQuery(query: string): boolean { return query.split('&')[0].length > 0; }
 }

@@ -1,11 +1,11 @@
-import { User } from './../state/interface/user.interface';
-import { Book } from './../state/interface/book.interface';
-import { map, Observable, of, Subscription } from 'rxjs';
-import { QueryObject } from './services/book-search.service';
-import { search, loadMore, addToWishList } from './../state/books/books.actions';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { map, Observable, Subscription } from 'rxjs';
 import { AppState } from '../state/state';
+import * as BooksActions from './../state/books/books.actions';
+import { Book } from './../state/interface/book.interface';
+import { User } from './../state/interface/user.interface';
+import { BookSearchService, QueryObject } from './services/book-search.service';
 
 @Component({
   selector: 'app-book-search',
@@ -21,7 +21,10 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   showModal = false;
   book!: Book;
   loadMoreEnabled = true;
-  constructor(private store: Store<AppState>) { }
+  constructor(
+    private store: Store<AppState>,
+    private booksSearchService: BookSearchService
+  ) { }
 
   ngOnInit(): void {
     this.booksSubscription = this.store.select('books').subscribe(state => {
@@ -34,13 +37,17 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void { this.booksSubscription.unsubscribe(); }
   onSearch(query: QueryObject): void {
-    this.store.dispatch(search({
-      payload: query
-    }));
+    const strQuery = this.booksSearchService.buildQuery(query);
+    const isValid = this.booksSearchService.isValidQuery(strQuery);
+    if (isValid) {
+      this.store.dispatch(BooksActions.onQuery({ payload: query }));
+      this.store.dispatch(BooksActions.search({ payload: strQuery }));
+    }
+    else this.store.dispatch(BooksActions.clear());
   }
   onLoadMore(index: number): void {
     if (index < (this.totalItems -1)) {
-      this.store.dispatch(loadMore({
+      this.store.dispatch(BooksActions.loadMore({
         payload: {
           index,
           lastQuery: this.lastQuery
@@ -53,7 +60,7 @@ export class BookSearchComponent implements OnInit, OnDestroy {
     this.showModal = true;
   }
   addBookToWishList(): void {
-    this.store.dispatch(addToWishList({ payload: this.book }));
+    this.store.dispatch(BooksActions.addToWishList({ payload: this.book }));
     this.hideModal();
   }
   hideModal(): void { this.showModal = false; }
