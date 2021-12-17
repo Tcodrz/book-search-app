@@ -16,22 +16,23 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   books: Book[] = [];
   user$!: Observable<User>;
   lastQuery!: QueryObject;
+  booksSubscription: Subscription = new Subscription();
   totalItems = 0;
-  querySubscription: Subscription = new Subscription();
-  totalItemsSubscription: Subscription = new Subscription();
   showModal = false;
   book!: Book;
+  loadMoreEnabled = true;
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.store.select('books').subscribe(state => {
+    this.booksSubscription = this.store.select('books').subscribe(state => {
       this.books = state.books;
       this.lastQuery = state.query;
       this.totalItems = state.totalItems;
+      this.loadMoreEnabled = this.books.length < this.totalItems;
     })
     this.user$ = this.store.select('user').pipe(map(state => state.user));
   }
-  ngOnDestroy(): void { this.querySubscription.unsubscribe(); }
+  ngOnDestroy(): void { this.booksSubscription.unsubscribe(); }
   onSearch(query: QueryObject): void {
     this.store.dispatch(search({
       payload: query

@@ -1,7 +1,8 @@
 <app-navbar></app-navbar>
 <div class="container">
   <app-search [user]="user$ | async" [query]="lastQuery" (search)="onSearch($event)"></app-search>
-  <app-results [value]="books" (load)="onLoadMore($event)" (showDetails)="onShowBookDetails($event)">
+  <app-results [value]="books" [loadMoreEnabled]="loadMoreEnabled" (load)="onLoadMore($event)"
+    (showDetails)="onShowBookDetails($event)">
   </app-results>
 </div>
 

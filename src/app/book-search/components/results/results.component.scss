@@ -7,6 +7,7 @@
     height: fit-content !important;
     padding: 11px 0 13px 35px;
   }
+
   div.p-virtualscroller-item:hover {
     background-color: #f5f9ff;
   }
@@ -25,7 +26,7 @@
   .row-container {
     display: flex;
     flex-direction: column;
-
+    cursor: pointer;
 
     .result-row {
       min-width: 100%;

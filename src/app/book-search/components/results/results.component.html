@@ -16,6 +16,6 @@
       </div>
     </ng-template>
   </p-virtualScroller>
-  <button pButton type="button" (click)="loadMore()" label="load more" icon="pi pi-sync"
+  <button pButton type="button" [disabled]="!loadMoreEnabled" (click)="loadMore()" label="load more" icon="pi pi-sync"
     class="p-button-sm p-button-secondary load-more"></button>
 </div>

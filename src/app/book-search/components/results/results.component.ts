@@ -8,6 +8,7 @@ import { Book } from './../../../state/interface/book.interface';
 })
 export class ResultsComponent {
   @Input() set value(val: Book[] | null) { this.books = val ? val : []; }
+  @Input() loadMoreEnabled = true;
   @Output() load: EventEmitter<number> = new EventEmitter();
   @Output() showDetails: EventEmitter<Book> = new EventEmitter();
   books: Book[] = [];
