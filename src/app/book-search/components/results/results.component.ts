@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Book } from './../../../state/interface/book.interface';
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
-  styleUrls: ['./results.component.scss']
+  styleUrls: ['./results.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ResultsComponent {
   @Input() set value(val: Book[] | null) { this.books = val ? val : []; }

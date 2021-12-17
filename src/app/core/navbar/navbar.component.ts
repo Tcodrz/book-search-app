@@ -3,14 +3,15 @@ import { CachService } from './../services/cach.service';
 import { logout } from './../../state/user/user.actions';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import {MenuItem} from 'primeng/api';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 import { AppState } from 'src/app/state/state';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent implements OnInit {
   items: MenuItem[] = [];
@@ -26,12 +27,7 @@ export class NavbarComponent implements OnInit {
       {
         label: 'Logout',
         icon: 'pi pi-sign-out',
-        command: (() => {
-          this.store.dispatch(logout());
-          this.store.dispatch(clear())
-          this.cache.clear();
-          this.router.navigate(['login']);
-        })
+        command: (this.onLogout)
       },
       {
         label: 'search',
@@ -50,6 +46,13 @@ export class NavbarComponent implements OnInit {
         disabled: url === '/wishlist'
       }
     ]
+  }
+
+  onLogout = () => {
+    this.store.dispatch(logout());
+    this.store.dispatch(clear())
+    this.cache.clear();
+    this.router.navigate(['login']);
   }
 
 }

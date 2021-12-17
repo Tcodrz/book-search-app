@@ -1,5 +1,5 @@
 import { Store } from '@ngrx/store';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AppState } from 'src/app/state/state';
 import { map, Observable, of } from 'rxjs';
 
@@ -8,6 +8,7 @@ import { map, Observable, of } from 'rxjs';
   template: `
   <p-progressSpinner *ngIf="isLoading$ | async"></p-progressSpinner>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoaderComponent implements OnInit {
   isLoading$: Observable<boolean> = of(false);

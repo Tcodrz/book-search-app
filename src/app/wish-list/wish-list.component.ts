@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 import * as BooksActions from '../state/books/books.actions';
@@ -8,7 +8,8 @@ import { Book } from './../state/interface/book.interface';
 @Component({
   selector: 'app-wish-list',
   templateUrl: './wish-list.component.html',
-  styleUrls: ['./wish-list.component.scss']
+  styleUrls: ['./wish-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WishListComponent implements OnInit {
   books: Book[] = [];

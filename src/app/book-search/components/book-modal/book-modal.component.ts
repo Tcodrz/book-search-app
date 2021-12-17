@@ -1,10 +1,11 @@
 import { Book } from './../../../state/interface/book.interface';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-book-modal',
   templateUrl: './book-modal.component.html',
-  styleUrls: ['./book-modal.component.scss']
+  styleUrls: ['./book-modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookModalComponent {
   @Input() showModal = false;

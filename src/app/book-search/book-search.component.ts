@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable, Subscription } from 'rxjs';
 import { AppState } from '../state/state';
@@ -10,7 +10,8 @@ import { BookSearchService, QueryObject } from './services/book-search.service';
 @Component({
   selector: 'app-book-search',
   templateUrl: './book-search.component.html',
-  styleUrls: ['./book-search.component.scss']
+  styleUrls: ['./book-search.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookSearchComponent implements OnInit, OnDestroy {
   books: Book[] = [];

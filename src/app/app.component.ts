@@ -2,13 +2,14 @@ import * as UserActions from './state/user/user.actions';
 import { User } from './state/interface/user.interface';
 import { CachService } from './core/services/cach.service';
 import { Store } from '@ngrx/store';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AppState } from './state/state';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit{
   constructor(
