@@ -1,11 +1,11 @@
-import { Store } from '@ngrx/store';
-import { BookSearchService } from './../../book-search/services/book-search.service';
-import { search, response, loadMore, moreLoaded, onQuery } from './books.actions';
-import { ApiService } from '../../core/services/api.service';
-import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, EMPTY, map, mergeMap } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { Store } from '@ngrx/store';
+import { catchError, EMPTY, map, mergeMap } from 'rxjs';
+import { ApiService } from '../../core/services/api.service';
 import { AppState } from '../state';
+import { BookSearchService } from './../../book-search/services/book-search.service';
+import { loadMore, moreLoaded, onQuery, response, search } from './books.actions';
 
 @Injectable()
 export class BooksEffects {
@@ -37,7 +37,7 @@ export class BooksEffects {
       map((books) => (moreLoaded({ payload: books }))),
       catchError(() => EMPTY)
     ))
-  ))
+  ));
 
   constructor(
     private store: Store<AppState>,

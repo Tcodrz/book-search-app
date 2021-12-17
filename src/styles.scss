@@ -7,11 +7,16 @@
 
 body {
   font-family: 'Noto Sans', sans-serif !important;
+  color: #495057;
 }
 
 .loader-container {
   position: absolute;
   left: 47vw;
+}
+
+.p-menubar {
+  margin-bottom: 1rem;
 }
 
 

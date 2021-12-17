@@ -41,6 +41,12 @@ const _booksReducer = createReducer(
       wishList: [ ...state.wishList, action.payload]
     };
   }),
+  on(BooksActions.removeFromWishList, (state, action) => {
+    return {
+      ...state,
+      wishList: state.wishList.filter(book => book !== action.payload)
+    };
+  }),
   on(BooksActions.onQuery, (state, action) => {
     return {
       ...state,
