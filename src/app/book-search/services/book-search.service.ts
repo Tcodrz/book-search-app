@@ -11,15 +11,15 @@ export interface QueryObject {
   providedIn: 'root'
 })
 export class BookSearchService {
-
-  constructor() { }
-
-  buildQuery(options: QueryObject): string {
+  private readonly params = '&langRestrict=english&maxResults=20';
+  buildQuery(options: QueryObject, startIndex?: number): string {
     const query = [];
     for (const key of Object.keys(options)) {
       if (options[key as keyof QueryObject])
         query.push([key, options[key as keyof QueryObject]].join(':'));
     }
-    return query.join('+');
+    let queryStr = query.join('+') + this.params;
+    if (startIndex) queryStr += `&startIndex=${startIndex}`;
+    return queryStr;
   }
 }

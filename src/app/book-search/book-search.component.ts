@@ -28,7 +28,7 @@ export class BookSearchComponent implements OnInit, OnDestroy {
       this.books = state.books;
       this.lastQuery = state.query;
       this.totalItems = state.totalItems;
-      this.loadMoreEnabled = this.books.length < this.totalItems;
+      this.loadMoreEnabled = this.books ? this.books.length < this.totalItems : false;
     })
     this.user$ = this.store.select('user').pipe(map(state => state.user));
   }
