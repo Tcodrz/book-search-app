@@ -1,3 +1,4 @@
+import { clear } from './../../state/books/books.actions';
 import { CachService } from './../services/cach.service';
 import { logout } from './../../state/user/user.actions';
 import { Store } from '@ngrx/store';
@@ -29,6 +30,7 @@ export class NavbarComponent implements OnInit {
         icon: 'pi pi-sign-out',
         command: (() => {
           this.store.dispatch(logout());
+          this.store.dispatch(clear())
           this.cache.clear();
           this.router.navigate(['login']);
         })

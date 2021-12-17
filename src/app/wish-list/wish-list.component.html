@@ -4,7 +4,7 @@
     <h1>Wishlist</h1>
     <p-orderList [value]="books">
       <ng-template let-book pTemplate="item">
-        <div>
+        <div (click)="openModal(book)">
           <div class="list-item-info">
             <img [src]="book.volumeInfo?.imageLinks?.thumbnail" style="display:inline-block;margin:2px 0 2px 2px"
               width="48">
@@ -26,3 +26,6 @@
     <h3>Your wishlist is empty, you can add books from the search page</h3>
   </p-card>
 </ng-template>
+
+<app-book-modal [value]="selectedBook" [showModal]="showModal" [showAddToWishList]="false" (hide)="closeModal()">
+</app-book-modal>

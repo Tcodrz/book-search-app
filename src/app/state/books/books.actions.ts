@@ -10,3 +10,4 @@ export const moreLoaded = createAction('[BOOKS] More Loaded', props<{ payload: B
 export const addToWishList = createAction('[BOOKS] Add To WishList', props<{ payload: Book}>());
 export const removeFromWishList = createAction('[BOOKS] Remove From WishList', props<{ payload: Book}>());
 export const onQuery = createAction('[BOOKS] Query', props<{ payload: QueryObject}>());
+export const clear = createAction('[BOOKS] Clear');

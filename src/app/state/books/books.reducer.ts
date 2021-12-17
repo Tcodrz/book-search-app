@@ -52,6 +52,9 @@ const _booksReducer = createReducer(
       ...state,
       query: action.payload
     }
+  }),
+  on(BooksActions.clear, () => {
+    return initialBooksState;
   })
 );
 export function booksReducer(state = initialBooksState, action: Action): BooksState {
