@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, EMPTY, map, mergeMap } from 'rxjs';
 import { ApiService } from '../../core/services/api.service';
 import { BookSearchService } from './../../book-search/services/book-search.service';
-import { loadMore, moreLoaded, response, search } from './books.actions';
+import { addedToWishList, addToWishList, loadMore, moreLoaded, removedFromWishList, removeFromWishList, response, search } from './books.actions';
 
 @Injectable()
 export class BooksEffects {
@@ -26,6 +26,20 @@ export class BooksEffects {
           catchError(() => EMPTY)
         ))
   ));
+  addToWishList$ = createEffect(() => this.actions$.pipe(
+    ofType(addToWishList),
+    map((action) => {
+      this.booksSearchService.addBookToWishtList(action.payload);
+      return addedToWishList({ payload: action.payload });
+    })
+  ));
+  removeFromWishList$ = createEffect(() => this.actions$.pipe(
+    ofType(removeFromWishList),
+    map((action) => {
+      this.booksSearchService.removeBookFromWishList(action.payload);
+      return removedFromWishList({ payload: action.payload });
+    })
+  ))
 
   constructor(
     private actions$: Actions,

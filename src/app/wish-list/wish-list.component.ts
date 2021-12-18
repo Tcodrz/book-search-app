@@ -1,3 +1,4 @@
+import { CacheService } from './../core/services/cach.service';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
@@ -17,9 +18,14 @@ export class WishListComponent implements OnInit {
   showModal = false;
 
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private cache: CacheService
   ) { }
   ngOnInit(): void {
+    const wishlist = this.cache.getItem<Book[]>('wishlist');
+    if (wishlist) {
+        this.store.dispatch(BooksActions.setWishList({ payload: wishlist }));
+    }
     this.store.select('books').pipe(map(state => state.wishList)).subscribe(wishlist => {
         this.books = wishlist
     });

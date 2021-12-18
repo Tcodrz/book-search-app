@@ -14,7 +14,9 @@ interface ApiResponse {
 export class ApiService {
   private readonly apiEndpoint = 'https://www.googleapis.com/books/v1/volumes';
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
   searchBooks(query: string): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(`${this.apiEndpoint}?q=${query}&key=${environment.booksApiKey}`);
   }

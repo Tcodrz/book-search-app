@@ -1,8 +1,9 @@
+import { AuthGuard } from './../core/guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { WishListComponent } from './wish-list.component';
 
-const routes: Routes = [{ path: '', component: WishListComponent }];
+const routes: Routes = [{ path: '', component: WishListComponent, canActivate: [ AuthGuard ] }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

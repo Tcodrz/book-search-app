@@ -66,7 +66,7 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   }
   hideModal(): void { this.showModal = false; }
   bookInWishList(): Observable<boolean> {
-    return this.store.select('books').pipe(map(state => state.wishList.includes(this.book)));
+    return this.store.select('books').pipe(map(state => state.wishList.findIndex(b => b.id === this.book.id) >= 0));
   }
 
 }

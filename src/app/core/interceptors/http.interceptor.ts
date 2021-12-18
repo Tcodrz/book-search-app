@@ -9,9 +9,11 @@ import { loaded, loading } from './../../state/state';
 
 @Injectable()
 export class MyHttpInterceptor implements HttpInterceptor {
-  constructor(private store: Store<AppState>) { }
+  constructor(
+    private store: Store<AppState>
+  ) { }
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    this.store.dispatch(loading())
+    this.store.dispatch(loading());
     return next.handle(request).pipe(
       tap((req) => {
         if (req instanceof HttpResponse)

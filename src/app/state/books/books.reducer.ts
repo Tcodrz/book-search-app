@@ -35,17 +35,28 @@ const _booksReducer = createReducer(
       books: state.books.concat(action.payload)
     };
   }),
-  on(BooksActions.addToWishList, (state, action) => {
-    return {
-      ...state,
-      wishList: [ ...state.wishList, action.payload]
-    };
+  on(BooksActions.addedToWishList, (state, action) => {
+    const isInWishList = state.wishList.findIndex(b => b.id === action.payload.id) >= 0;
+    if (!isInWishList) {
+      return {
+        ...state,
+        wishList: [ ...state.wishList, action.payload]
+      };
+    } else {
+      return state;
+    }
   }),
-  on(BooksActions.removeFromWishList, (state, action) => {
+  on(BooksActions.removedFromWishList, (state, action) => {
     return {
       ...state,
       wishList: state.wishList.filter(book => book !== action.payload)
     };
+  }),
+  on(BooksActions.setWishList, (state, action) => {
+    return {
+      ...state,
+      wishList: action.payload
+    }
   }),
   on(BooksActions.onQuery, (state, action) => {
     return {
@@ -53,9 +64,7 @@ const _booksReducer = createReducer(
       query: action.payload
     }
   }),
-  on(BooksActions.clear, () => {
-    return initialBooksState;
-  })
+  on(BooksActions.clear, () => initialBooksState )
 );
 export function booksReducer(state = initialBooksState, action: Action): BooksState {
   return _booksReducer(state, action);
