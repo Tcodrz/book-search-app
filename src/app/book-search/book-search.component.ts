@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map, Observable, Subscription } from 'rxjs';
+import { map, Observable, Subscription, of } from 'rxjs';
 import { AppState } from '../state/state';
 import * as BooksActions from './../state/books/books.actions';
 import { Book } from './../state/interface/book.interface';
@@ -66,6 +66,7 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   }
   hideModal(): void { this.showModal = false; }
   bookInWishList(): Observable<boolean> {
+    if (!this.book?.id) return of(false);
     return this.store.select('books').pipe(map(state => state.wishList.findIndex(b => b.id === this.book.id) >= 0));
   }
 

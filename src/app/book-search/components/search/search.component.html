@@ -1,41 +1,28 @@
 <p-fieldset>
   <ng-template pTemplate="header">
-    <h2>
-      Hello, {{ username }}
-    </h2>
+    <h2>Hello, {{ username }}</h2>
   </ng-template>
   <form [formGroup]="searchForm">
     <div class="search-info">
       <i class="pi pi-search"></i>
-      <div>
-        You can combine any of the parameters to find books, but at least one is required
-      </div>
+      <div>You can combine any of the parameters to find books, but at least one is required</div>
     </div>
     <div class="search-inputs">
-
-      <div>
-        <div class="p-inputgroup">
-          <span class="p-inputgroup-addon"><i class="pi pi-book"></i></span>
-          <input type="text" pInputText formControlName="intitle" placeholder="Title">
-        </div>
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-book"></i></span>
+        <input type="text" pInputText formControlName="intitle" placeholder="Title">
       </div>
-      <div>
-        <div class="p-inputgroup">
-          <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-          <input type="text" pInputText formControlName="inauthor" placeholder="Author">
-        </div>
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input type="text" pInputText formControlName="inauthor" placeholder="Author">
       </div>
-      <div>
-        <div class="p-inputgroup">
-          <span class="p-inputgroup-addon"><i class="pi pi-users"></i></span>
-          <input type="text" pInputText formControlName="inpublisher" placeholder="Publisher">
-        </div>
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-users"></i></span>
+        <input type="text" pInputText formControlName="inpublisher" placeholder="Publisher">
       </div>
-      <div>
-        <div class="p-inputgroup">
-          <span class="p-inputgroup-addon"><i class="pi pi-list"></i></span>
-          <input type="text" pInputText formControlName="subject" placeholder="Category">
-        </div>
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-list"></i></span>
+        <input type="text" pInputText formControlName="subject" placeholder="Category">
       </div>
     </div>
   </form>

@@ -9,7 +9,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { CommonModule } from '@angular/common';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { DialogModule } from 'primeng/dialog';
-import {MenubarModule} from 'primeng/menubar';
+import { MenubarModule } from 'primeng/menubar';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -19,16 +20,17 @@ import {MenubarModule} from 'primeng/menubar';
     ProgressSpinnerModule
   ],
   exports: [
-    InputTextModule,
-    FieldsetModule,
-    OrderListModule,
     ButtonModule,
     CardModule,
-    ProgressSpinnerModule,
-    LoaderComponent,
-    VirtualScrollerModule,
     DialogModule,
-    MenubarModule
+    FieldsetModule,
+    InputTextModule,
+    LoaderComponent,
+    MenubarModule,
+    OrderListModule,
+    ProgressSpinnerModule,
+    ToastModule,
+    VirtualScrollerModule,
   ],
 })
 export class PrimengModule { }

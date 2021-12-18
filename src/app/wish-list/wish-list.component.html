@@ -5,6 +5,7 @@
     <app-book-list [books]="books" [withButton]="true" [buttonValue]="'Remove'"
       (bookBtnClick)="removeFromWishList($event)" (bookSelected)="openModal($event)"></app-book-list>
   </ng-container>
+  <p-toast key="wishlist-remove"></p-toast>
 </div>
 
 <ng-template #emptyWishList>

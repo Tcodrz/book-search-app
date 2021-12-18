@@ -1,5 +1,5 @@
 <div class="result-container" *ngIf="books.length">
-  <app-book-list [books]="books" (bookSelected)="bookClicked($event)"></app-book-list>
+  <app-book-list [books]="books" [withButton]="false" (bookSelected)="bookClicked($event)"></app-book-list>
   <button pButton type="button" [disabled]="!loadMoreEnabled" (click)="loadMore()" label="load more" icon="pi pi-sync"
     class="p-button-sm p-button-secondary load-more"></button>
 </div>

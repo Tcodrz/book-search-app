@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { MessageService } from 'primeng/api';
 import { catchError, EMPTY, map, mergeMap } from 'rxjs';
 import { ApiService } from '../../core/services/api.service';
 import { BookSearchService } from './../../book-search/services/book-search.service';
@@ -30,13 +31,15 @@ export class BooksEffects {
     ofType(addToWishList),
     map((action) => {
       this.booksSearchService.addBookToWishtList(action.payload);
+      this.msgService.add({ severity: 'info', icon: 'pi pi-heart-fill', summary: `${action.payload.volumeInfo.title} Added To Your Wish List!`, key: 'wishlist-add'});
       return addedToWishList({ payload: action.payload });
     })
-  ));
-  removeFromWishList$ = createEffect(() => this.actions$.pipe(
-    ofType(removeFromWishList),
-    map((action) => {
-      this.booksSearchService.removeBookFromWishList(action.payload);
+    ));
+    removeFromWishList$ = createEffect(() => this.actions$.pipe(
+      ofType(removeFromWishList),
+      map((action) => {
+        this.booksSearchService.removeBookFromWishList(action.payload);
+        this.msgService.add({ severity: 'warn', summary: `${action.payload.volumeInfo.title} Removed From Your Wish List!`, key: 'wishlist-remove'});
       return removedFromWishList({ payload: action.payload });
     })
   ))
@@ -44,7 +47,8 @@ export class BooksEffects {
   constructor(
     private actions$: Actions,
     private api: ApiService,
-    private booksSearchService: BookSearchService
+    private booksSearchService: BookSearchService,
+    private msgService: MessageService
   ) { }
 }
 

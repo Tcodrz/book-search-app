@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { reducers } from './state';
+import { MessageService } from 'primeng/api';
 
 
 
@@ -15,6 +16,7 @@ import { reducers } from './state';
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 20 }),
     EffectsModule.forRoot([BooksEffects])
-  ]
+  ],
+  providers: [MessageService]
 })
 export class StateModule { }

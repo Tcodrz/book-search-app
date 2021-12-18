@@ -4,6 +4,7 @@
   <app-results [value]="books" [loadMoreEnabled]="loadMoreEnabled" (load)="onLoadMore($event)"
     (showDetails)="onShowBookDetails($event)">
   </app-results>
+  <p-toast key="wishlist-add"></p-toast>
 </div>
 
 <app-book-modal [value]="book" [showModal]="showModal" [bookInWishList]="bookInWishList() | async" (hide)="hideModal()"
