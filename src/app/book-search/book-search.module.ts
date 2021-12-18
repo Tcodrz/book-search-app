@@ -1,4 +1,3 @@
-import { PlatformModule } from '@angular/cdk/platform';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -20,12 +19,11 @@ import { SearchComponent } from './components/search/search.component';
   ],
   imports: [
     CommonModule,
-    ScrollingModule,
-    PlatformModule,
     BookSearchRoutingModule,
     ReactiveFormsModule,
+    ScrollingModule,
     PrimengModule,
-    CoreModule
+    CoreModule,
   ],
   providers: [ ]
 })

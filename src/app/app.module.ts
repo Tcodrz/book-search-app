@@ -1,3 +1,4 @@
+import { PlatformModule } from '@angular/cdk/platform';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MyHttpInterceptor } from './core/interceptors/http.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -19,6 +20,7 @@ import { StateModule } from './state/state.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    PlatformModule,
     AppRoutingModule,
     HttpClientModule,
     StateModule,
