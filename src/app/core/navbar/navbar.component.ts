@@ -1,5 +1,5 @@
 import { clear } from './../../state/books/books.actions';
-import { CachService } from './../services/cach.service';
+import { CacheService } from './../services/cach.service';
 import { logout } from './../../state/user/user.actions';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private router: Router,
-    private cache: CachService
+    private cache: CacheService
   ) { }
   ngOnInit(): void {
     const url = this.router.url;

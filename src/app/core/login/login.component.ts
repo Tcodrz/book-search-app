@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/state/state';
-import { CachService } from '../services/cach.service';
+import { CacheService } from '../services/cach.service';
 import { User } from './../../state/interface/user.interface';
 import { login } from './../../state/user/user.actions';
 
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private store: Store<AppState>,
     private router: Router,
-    private cache: CachService
+    private cache: CacheService
   ) { }
   get username() { return this.form.get('username'); }
   ngOnInit(): void {

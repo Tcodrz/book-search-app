@@ -1,6 +1,6 @@
 import * as UserActions from './state/user/user.actions';
 import { User } from './state/interface/user.interface';
-import { CachService } from './core/services/cach.service';
+import { CacheService } from './core/services/cach.service';
 import { Store } from '@ngrx/store';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AppState } from './state/state';
@@ -14,7 +14,7 @@ import { AppState } from './state/state';
 export class AppComponent implements OnInit{
   constructor(
     private store: Store<AppState>,
-    private cache: CachService
+    private cache: CacheService
   ) {}
   ngOnInit(): void {
     const cachedUser =this.cache.getItem<User | null >('user')
