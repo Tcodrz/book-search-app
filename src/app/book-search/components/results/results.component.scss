@@ -1,75 +1,51 @@
-::ng-deep {
-  .p-orderlist .p-orderlist-controls {
-    display: none;
-  }
-
-  div.p-virtualscroller-item {
-    height: fit-content !important;
-    padding: 11px 0 13px 35px;
-  }
-
-  div.p-virtualscroller-item:hover {
-    background-color: #f5f9ff;
-  }
-
-  @media only screen and (max-width: 768px) {
-    div.p-virtualscroller-item {
-      padding: 11px 0 13px 12px;
-    }
-
-  }
+.virtual-scroll-wrap {
+  width: 50%;
+  margin: auto;
+  min-width: 380px
 }
 
-.result-container {
-  margin-top: 1.5rem;
+.load-more {
+  margin-top: 1rem;
+}
 
-  .row-container {
+cdk-virtual-scroll-viewport {
+  height: 60vh;
+
+  li {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    height: fit-content;
+    list-style: none;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 5px;
+  }
+
+  li:hover {
+    background-color: #f5f9ff;
     cursor: pointer;
+  }
 
-    .result-row {
-      min-width: 100%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-start;
+  .thumbnail-wrap {
+    width: 100px;
+    display: inline-block;
 
-
-      img {
-        margin: 0 10px 0 0;
-      }
-
-      h4 {
-        margin: 0;
-      }
-
-      .authors {
-        margin: 6px 0;
-      }
-
-      .language {
-        margin: 5px 0;
-      }
-    }
-
-    .actions {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-self: baseline;
-      padding-left: 42px;
-      min-width: max-content;
-
-      button {
-        margin: auto;
-        min-width: fit-content;
-        margin-left: 1rem;
-      }
+    img {
+      height: 65px;
+      margin: 18px 14px;
     }
   }
 
-  .load-more {
-    margin-top: 1rem;
+  .info-wrap {
+    vertical-align: top;
+    display: inline-block;
+
+    h4 {
+      margin: 0 0 5px 0;
+    }
+    p {
+      margin: 5px 0 0 0 ;
+    }
   }
 }
+
