@@ -1,4 +1,4 @@
-import { BookListComponent } from './../book-search/components/book-list-item/book-list.component';
+import { BookListComponent } from '../book-search/components/book-list/book-list.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BookModalComponent } from './../book-search/components/book-modal/book-modal.component';
